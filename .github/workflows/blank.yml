@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    name: Build ${{ matrix.os }}-${{ matrix.mode }}
+    name: Build ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -20,7 +20,9 @@ jobs:
         with:
           repository: vultur/SmartEdu-Textbook
           token: ${{ secrets.ACCESS_TOKEN }}
+          fetch-depth: 0
           persist-credentials: false
+        
 
       - name: Setup Python environment
         uses: actions/setup-python@v5
