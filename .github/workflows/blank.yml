@@ -45,6 +45,12 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
+      - name: Show path and all files
+        run: |
+          pwd
+          ls -la
+        shell: bash
+
       - name: Setup python
         uses: actions/setup-python@v5
         with:
