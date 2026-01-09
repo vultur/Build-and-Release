@@ -32,7 +32,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          cd vultur/SmartEdu-Textbook && pip install -r requirements.txt
         shell: bash
 
       - name: Run deploy.py
@@ -46,9 +46,9 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            ./dist/assets/*.zip
-            ./dist/assets/*.dmg
-            ./dist/assets/*.tar.gz
+            .vultur/SmartEdu-Textbook/dist/assets/*.zip
+            .vultur/SmartEdu-Textbook/dist/assets/*.dmg
+            .vultur/SmartEdu-Textbook/dist/assets/*.tar.gz
           fail_on_unmatched_files: false
         env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
