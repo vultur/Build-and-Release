@@ -40,7 +40,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          repository: vultur/SmartEdu-Textbook
+          repository: vultur/SmartEdu-Tools
           token: ${{ secrets.ACCESS_TOKEN }}
           fetch-depth: 0
           persist-credentials: false
