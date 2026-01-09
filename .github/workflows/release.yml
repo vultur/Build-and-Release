@@ -3,11 +3,10 @@ name: Build and Release
 on:
   release:
     types: [published]
-  workflow_dispatch:
 
 jobs:
   build:
-    name: Build ${{ matrix.mode }} (${{ matrix.mode }})
+    name: Build ${{ matrix.os }} (${{ matrix.mode }})
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
