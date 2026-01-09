@@ -14,7 +14,7 @@ on:
           - Pro
           - Lite
       os:
-        description: 'Build OS (系统环境)'
+        description: 'System Platform (系统架构)'
         required: true
         default: 'macos-latest'
         type: choice
