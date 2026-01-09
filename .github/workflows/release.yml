@@ -41,14 +41,13 @@ jobs:
         env:
           PYTHONUTF8: 1
           PYTHONIOENCODING: utf-8
+          QT_QPA_PLATFORM: offscreen
 
       - name: Upload release assets
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            ./dist/assets/*.zip
-            ./dist/assets/*.dmg
-            ./dist/assets/*.tar.gz
+            ./dist/assets/*.*
           fail_on_unmatched_files: false
         env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
