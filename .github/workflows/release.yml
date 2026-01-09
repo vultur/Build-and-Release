@@ -6,13 +6,13 @@ on:
 
 jobs:
   build:
-    name: Build ${{ matrix.os }} (${{ matrix.mode }})
+    name: Build ${{ matrix.os }} [${{ matrix.mode }}]
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         os: [macos-latest, macos-15-intel, windows-latest, windows-11-arm64, ubuntu-latest, ubuntu-24.04-arm64]
-        mode: [pro, lite]
+        mode: [Pro, Lite]
 
     steps:
       - name: Checkout latest code
