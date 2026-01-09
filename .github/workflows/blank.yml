@@ -20,6 +20,7 @@ jobs:
         with:
           repository: vultur/SmartEdu-Textbook
           token: ${{ secrets.ACCESS_TOKEN }}
+          fetch-depth: 0
           persist-credentials: false
 
       - name: Setup python
