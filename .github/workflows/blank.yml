@@ -3,6 +3,28 @@ name: Build and Release
 on:
   release:
     types: [published]
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Build Edition (版本类型)'
+        required: true
+        default: 'Pro'
+        type: choice
+        options:
+          - Pro
+          - Lite
+      os:
+        description: 'Build OS (系统环境)'
+        required: true
+        default: 'macos-latest'
+        type: choice
+        options:
+          - macos-latest
+          - macos-15-intel
+          - windows-latest
+          - windows-11-arm64
+          - ubuntu-latest
+          - ubuntu-24.04-arm64
 
 jobs:
   build:
