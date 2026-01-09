@@ -55,10 +55,8 @@ jobs:
           QT_QPA_PLATFORM: offscreen
 
       - name: Upload release assets
-        uses: softprops/action-gh-release@v2
+        uses: ncipollo/release-action@v1
         with:
-          files: |
-            ./dist/assets/*.*
-          fail_on_unmatched_files: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          allowUpdates: true
+          artifacts: ./dist/assets/*.*
+          token: ${{ secrets.ACCESS_TOKEN }}
