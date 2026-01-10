@@ -11,8 +11,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest,macos-latest ubuntu-latest]
-        mode: [lite, pro]
+        os: [windows-latest,macos-latest, ubuntu-latest]
+        mode: [lite]
 
     steps:
       - name: Checkout latest code
