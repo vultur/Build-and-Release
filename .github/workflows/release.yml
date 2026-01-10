@@ -57,6 +57,7 @@ jobs:
       - name: Upload release assets
         uses: svenstaro/upload-release-action@v2
         with:
-          file: ./dist/*.*
+          file: ./dist/assets/*.*
+          file_glob: true
         env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
