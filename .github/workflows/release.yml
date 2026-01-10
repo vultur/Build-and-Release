@@ -57,6 +57,8 @@ jobs:
       - name: Upload release assets
         uses: ncipollo/release-action@v1
         with:
-          allowUpdates: true
-          artifacts: ./dist/assets/*.*
           token: ${{ secrets.ACCESS_TOKEN }}
+          artifacts: ./dist/assets/*.*
+          allowUpdates: true
+          removeArtifacts: true
+          generateReleaseNotes: false
