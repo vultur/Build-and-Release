@@ -43,15 +43,27 @@ jobs:
         shell: bash
 
       - name: Run deploy script
-        run: python ./src/deploy.py ${{ matrix.mode }}
+        run: python src/deploy.py ${{ matrix.mode }}
         shell: bash
         env:
           PYTHONUTF8: 1
           PYTHONIOENCODING: utf-8
 
-      - name: Upload release assets
-        uses: svenstaro/upload-release-action@v2
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
         with:
-          file: ./dist/assets/*.*
-          file_glob: true
-          repo_token: ${{ secrets.ACCESS_TOKEN }}
+          name: build-artifacts
+          path: dist/assets/
+          if-no-files-found: error
+          
+  release:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: build-artifacts
+          path: dist/assets/
+      - run: gh release upload ${{ github.ref_name }} dist/assets/*.* --clobber --rename-files=false
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
