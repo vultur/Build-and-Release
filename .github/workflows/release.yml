@@ -59,5 +59,4 @@ jobs:
         with:
           file: ./dist/assets/*.*
           file_glob: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          repo_token: ${{ secrets.ACCESS_TOKEN }}
