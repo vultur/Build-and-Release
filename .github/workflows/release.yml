@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    name: Build ${{ matrix.os }} [${{ matrix.mode }}]
+    name: Build ${{ matrix.os }} ${{ matrix.mode }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
