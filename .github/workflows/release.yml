@@ -54,7 +54,7 @@ jobs:
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
           artifacts: "dist/assets/*"
-          replaceArtifacts: true
+          allowUpdates: true
           artifactErrorsFailBuild: true
 
 
