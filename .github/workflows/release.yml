@@ -11,7 +11,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-latest, windows-latest, ubuntu-latest]
+        os: [windows-latest,macos-latest ubuntu-latest]
         mode: [lite]
 
     steps:
@@ -46,7 +46,8 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: ./dist/assets/*.*
-          overwrite: true
-          remove_files: true
+          overwrite_files: true
+          fail_on_unmatched_files: false
+          generate_release_notes: false
         env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
