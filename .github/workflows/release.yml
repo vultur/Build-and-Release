@@ -54,7 +54,7 @@ jobs:
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
           files: dist/assets/*.*
-          overwrite: true
+          overwrite_files: true
           fail_on_unmatched_files: true
 
 
