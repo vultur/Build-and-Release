@@ -50,11 +50,11 @@ jobs:
           PYTHONIOENCODING: utf-8
 
       - name: Upload release assets
-        uses: ncipollo/release-action@v1
+        uses: softprops/action-gh-release@v2
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
-          artifacts: "dist/assets/*"
-          allowUpdates: true
-          artifactErrorsFailBuild: true
+          files: dist/assets/*.*
+          overwrite: true
+          fail_on_unmatched_files: true
 
 
