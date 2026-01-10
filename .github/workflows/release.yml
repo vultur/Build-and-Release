@@ -36,6 +36,12 @@ jobs:
           sudo apt-get install -y libegl1
         shell: bash
 
+      - name: Remove problematic brew libs
+        run: |
+          brew remove --force --ignore-dependencies openssl@3
+          brew cleanup openssl@3
+        if: runner.os == 'macos' && matrix.arch == 'i386'
+
       - name: Install project dependencies
         run: |
           python -m pip install --upgrade pip
