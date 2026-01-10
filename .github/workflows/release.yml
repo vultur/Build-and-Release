@@ -60,5 +60,4 @@ jobs:
           token: ${{ secrets.ACCESS_TOKEN }}
           artifacts: ./dist/assets/*.*
           allowUpdates: true
-          removeArtifacts: true
-          generateReleaseNotes: false
+          replaceArtifacts: false
