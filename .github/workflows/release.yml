@@ -20,8 +20,6 @@ jobs:
         with:
           repository: vultur/SmartEdu-Tools
           token: ${{ secrets.ACCESS_TOKEN }}
-          fetch-depth: 0
-          persist-credentials: false
 
       - name: Setup python environment
         uses: actions/setup-python@v5
@@ -48,9 +46,6 @@ jobs:
 
       - name: Run deploy script
         run: python src/deploy.py ${{ matrix.mode }}
-        env:
-          PYTHONUTF8: 1
-          PYTHONIOENCODING: utf-8
 
       - name: Upload release assets
         uses: softprops/action-gh-release@v2
@@ -58,6 +53,3 @@ jobs:
           token: ${{ secrets.ACCESS_TOKEN }}
           files: dist/assets/*.*
           overwrite_files: true
-          fail_on_unmatched_files: true
-
-
