@@ -12,7 +12,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [windows-latest, windows-11-arm64, macos-latest, macos-15-intel, ubuntu-latest, ubuntu-24.04-arm64]
-        mode: [lite, pro]
+        mode: [pro]
 
     steps:
       - name: Checkout latest code
@@ -34,23 +34,20 @@ jobs:
         run: |
           sudo apt-get update -y
           sudo apt-get install -y libegl1
-        shell: bash
 
-      - name: Remove problematic brew libs
+      - name: Remove problematic libs (macOS Only)
+        if: matrix.os == 'macos-15-intel'
         run: |
-          brew remove --force --ignore-dependencies openssl@3
-          brew cleanup openssl@3
-        if: runner.os == 'macos' && matrix.arch == 'i386'
+            brew remove --force --ignore-dependencies openssl@3
+            brew cleanup openssl@3
 
       - name: Install project dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-        shell: bash
 
       - name: Run deploy script
         run: python src/deploy.py ${{ matrix.mode }}
-        shell: bash
         env:
           PYTHONUTF8: 1
           PYTHONIOENCODING: utf-8
