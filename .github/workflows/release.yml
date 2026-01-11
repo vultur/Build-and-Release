@@ -28,7 +28,7 @@ jobs:
           architecture: ${{ contains(matrix.os, 'arm64') && 'ARM64' || 'x64' }}
 
       - name: Install system dependencies (Linux Only)
-        if: startsWith(matrix.os, 'ubuntu')
+        if: contains(matrix.os, 'ubuntu')
         run: |
           sudo apt-get update -y
           sudo apt-get install -y libegl1
