@@ -46,6 +46,9 @@ jobs:
 
       - name: Run deploy script
         run: python src/deploy.py ${{ matrix.mode }}
+        env:
+          PYTHONUTF8: 1
+          PYTHONIOENCODING: utf-8
 
       - name: Upload release assets
         uses: softprops/action-gh-release@v2
